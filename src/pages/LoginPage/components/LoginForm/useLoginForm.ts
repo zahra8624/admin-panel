@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useLoginUser } from "../../../../hooks";
 
 interface LoginFormData {
   phone: string;
@@ -17,10 +18,11 @@ export const useLoginForm = () => {
     resolver: yupResolver(validations),
   });
   const { handleSubmit } = formProps;
+  const [loginUser, { isPending: isLoginLoading }] = useLoginUser();
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    loginUser(data);
   });
 
-  return { onSubmit, formProps };
+  return { onSubmit, formProps, isLoginLoading };
 };

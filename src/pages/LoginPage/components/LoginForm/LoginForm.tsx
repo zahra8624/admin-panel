@@ -7,7 +7,7 @@ import { ControlledTextInput } from "../../../../components";
 import { useLoginForm } from "./useLoginForm";
 
 export const LoginForm = () => {
-  const { formProps, onSubmit } = useLoginForm();
+  const { formProps, onSubmit, isLoginLoading } = useLoginForm();
   const { control } = formProps;
   return (
     <Card className="max-w-md">
@@ -41,7 +41,12 @@ export const LoginForm = () => {
 
             <Grid item xs={12}>
               <div className="flex px-10 w-full justify-center">
-                <Button fullWidth type="submit" variant="outlined">
+                <Button
+                  disabled={isLoginLoading}
+                  fullWidth
+                  type="submit"
+                  variant="outlined"
+                >
                   Login
                 </Button>
               </div>
