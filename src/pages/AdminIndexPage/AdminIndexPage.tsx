@@ -1,5 +1,5 @@
 const AdminIndexPage = () => {
-  return <div>Admin Page</div>;
+  return <p>محتوای اصلی صفحه در اینجا</p>;
 };
 
 export default AdminIndexPage;

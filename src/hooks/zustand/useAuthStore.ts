@@ -4,9 +4,10 @@ interface UseAuthStoreProps {
   isAuth: boolean;
   user?: {
     phone: string;
+    fullName: string;
   };
   toggleAuth: (isAuth: boolean) => void;
-  setUser: (user?: { phone: string }) => void;
+  setUser: (user?: { phone: string; fullName: string }) => void;
 }
 
 export const useAuthStore = create<UseAuthStoreProps>((set) => ({

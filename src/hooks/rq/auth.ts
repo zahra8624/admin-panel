@@ -22,7 +22,7 @@ const loginUser = (payload: LoginUserPayload) => {
           status: 422,
         });
       }
-    }, 3000);
+    }, 1000);
   });
 };
 
@@ -30,10 +30,14 @@ const getUser = () => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    return { phone: "12345" };
+    return { phone: "12345", fullName: "زهرا رئیسی" };
   }
 
   return false;
+};
+
+const logoutUser = () => {
+  localStorage.removeItem("token");
 };
 
 export const useLoginUser = () => {
@@ -66,4 +70,12 @@ export const useUser = () => {
   }, [data]);
 
   return [data, { isLoading }] as const;
+};
+
+export const useLogoutUser = () => {
+  const queryClient = useQueryClient();
+  return () => {
+    logoutUser();
+    queryClient.invalidateQueries({ queryKey: USER_QK });
+  };
 };

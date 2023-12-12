@@ -4,7 +4,7 @@ import { Control, Controller } from "react-hook-form";
 interface ControlledTextInputProps
   extends Pick<
     TextFieldProps,
-    "fullWidth" | "variant" | "className" | "id" | "label" | "required"
+    "fullWidth" | "variant" | "className" | "id" | "label" | "required" | "type"
   > {
   control: Control<any>;
   name: string;
